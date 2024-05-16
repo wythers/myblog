@@ -1,0 +1,52 @@
+version: "3.1"
+
+services:
+# web frontend service with react and backend gin
+  app:
+    build: ./app
+    depends_on:
+      - mongodb
+    volumes:
+      - /home/web/:/static/
+      - /home/mongodb/:/mongodb/
+    networks:
+      - back-tier
+
+# app service with nginx
+  appserver:
+    build: ./appserver
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      # set your posts repository url
+      REPOSITORY_URI: https://gitee.com/wyther-yang/articles/raw/master/
+    volumes:
+      # map your ssl cert dir
+      - /etc/letsencrypt/:/etc/letsencrypt/
+    depends_on:
+      - app
+    networks:
+      - back-tier
+
+# crypted mongodb service
+  crypted:
+    build: ./crypted/openssl
+    volumes:
+      - /home/mongodb/:/openssl/
+  mongodb:
+    build: ./database/mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD_FILE: /data/db/password.conf
+    ports:
+      - 27017:27017 
+    depends_on:
+      - crypted
+    networks:
+      - back-tier
+    volumes:
+      - /home/mongodb/:/data/db
+
+networks:
+  back-tier:

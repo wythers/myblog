@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+import fs from 'fs'
+
+const file = fs.readFileSync('./reporter.json');
+const names = JSON.parse(file).data;
+
+const paths = names.map(({name, chars}) => ({ 
+
+       url: `https://834832894.r.cdn36.com/chinesefonts3/packages/ysyrxk/dist/slideyouran-Regular2_0/${name}`,
+       unicodeRange: chars
+}));
+
+console.log(`const fonts = ${JSON.stringify(paths)}`)

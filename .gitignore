@@ -1,0 +1,12 @@
+###################
+*.com
+*.class
+*.o
+*.so
+
+###################
+app/react-front/node_modules
+app/react-front/dist
+
+###################
+app/gin-back/go.sum

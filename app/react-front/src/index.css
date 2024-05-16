@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* html overScrollBehavior for Safari in mobile browsers, and body overScroll Chrome to disable overpull-to-refresh */
+html, body {
+	overflow-x: hidden !important;
+	scroll-behavior: smooth;
+	overscroll-behavior: none;
+}
+
+.grayscrollbar::-webkit-scrollbar {
+	width: 14px;
+	height: 14px;
+}
+
+.grayscrollbar::-webkit-scrollbar-thumb {
+	background: #434343;
+	border-radius: 16px;
+	box-shadow: inset 2px 2px 2px hsla(0, 0%, 100%, .25), inset -2px -2px 2px rgba(0, 0, 0, .25)
+}
+
+.grayscrollbar::-webkit-scrollbar-track {
+	background: linear-gradient(90deg, #434343, #434343 1px, #111 0, #111)
+}
+
+.lightscrollbar::-webkit-scrollbar {
+	width: 14px;
+	height: 14px;
+}
+
+.lightscrollbar::-webkit-scrollbar-thumb {
+	background: #c7c4c4;
+	border-radius: 16px;
+	box-shadow: inset 2px 2px 2px hsla(0, 0%, 100%, .25), inset -2px -2px 2px rgba(0, 0, 0, .25)
+}
+
+.lightscrollbar::-webkit-scrollbar-track {
+	background: #f1eeee
+}
+
+.graysmallscrollbar::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+
+.graysmallscrollbar::-webkit-scrollbar-thumb {
+	background: #5f5e5e;
+	border-radius: 16px;
+	box-shadow: inset 2px 2px 2px hsla(0, 0%, 100%, .25), inset -2px -2px 2px rgba(0, 0, 0, .25)
+}
+
+.graysmallscrollbar::-webkit-scrollbar {
+	background: linear-gradient(90deg, #434343, #434343 1px, #3a3939 0, #111)
+}
+
+.lightsmallscrollbar::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+
+.lightsmallscrollbar::-webkit-scrollbar-thumb {
+	background: #c7c4c4;
+	border-radius: 16px;
+	box-shadow: inset 2px 2px 2px hsla(0, 0%, 100%, .25), inset -2px -2px 2px rgba(0, 0, 0, .25)
+}
+
+.lightsmallscrollbar::-webkit-scrollbar {
+	background: #f1eeee
+}
+
+.navbar .navbaritem {
+	overflow: hidden !important;
+	display: -webkit-box !important;
+	-webkit-box-orient: vertical !important;
+	-webkit-line-clamp: 1 !important;
+}
+
+.navbar:hover .navbaritem {
+	overflow: visible !important;
+	display: block !important;
+	-webkit-box-orient: horizontal !important;
+	-webkit-line-clamp: none !important;
+}
+
+.navbar .navbartip {
+	display: none;
+}
+
+.navbar:hover .navbartip {
+	display: flex;
+}
+
+/* override the ugly tailwindcss prose-code style */
+.markdown code::before {
+	content: "";
+}
+.markdown code::after {
+	content: "";
+}
+
+.markdown pre code {
+	display: block;
+	background-color: transparent !important; 
+	overflow: visible;
+	border-radius: 0px;
+}
+
+.codeblock {
+	background: transparent;
+	font-family: -apple-system, Roboto, "Open Sans", "Helvetica Neue", sans-serif !important;
+	font-size: medium !important;
+	font-weight: 200;
+	max-height: 80vh;
+	overflow: auto;
+}
+
+.codeblock-tab {
+	font-family: -apple-system, Roboto, "Open Sans", "Helvetica Neue", sans-serif !important;
+	font-size: medium !important;
+	font-weight: 200;
+}

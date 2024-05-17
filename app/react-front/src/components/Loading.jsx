@@ -141,6 +141,7 @@ export default function ({ lang, moduleHandler, hotDataHandler, pure, tasks, mod
 function LoadingDial({ msgs, spring }) {
   const theme = localStorage.getItem('theme');
   const [scroll, setScroll] = useState(false);
+  const copyMsgs = [...msgs]
   return (
     <animated.div
       style={{ ...spring }}
@@ -148,7 +149,7 @@ function LoadingDial({ msgs, spring }) {
       onMouseEnter={() => setScroll(true)}
       onMouseLeave={() => setScroll(false)}
     >
-      {msgs.toReversed().map((m, idx) => <Msg m={m} key={idx} />)}
+      {copyMsgs.reverse().map((m, idx) => <Msg m={m} key={idx} />)}
     </animated.div>
   )
 }
@@ -156,6 +157,7 @@ function LoadingDial({ msgs, spring }) {
 function LoadingSmallDial({ msgs, spring }) {
   const theme = localStorage.getItem('theme');
   const [scroll, setScroll] = useState(false);
+  const copyMsgs = [...msgs]
   return (
     <animated.div
       style={{ ...spring }}
@@ -163,7 +165,7 @@ function LoadingSmallDial({ msgs, spring }) {
       onMouseEnter={() => setScroll(true)}
       onMouseLeave={() => setScroll(false)}
     >
-      {msgs.toReversed().map((m, idx) => <Msg m={m} key={idx} />)}
+      {copyMsgs.reverse().map((m, idx) => <Msg m={m} key={idx} />)}
     </animated.div>
   )
 }

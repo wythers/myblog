@@ -9,7 +9,7 @@ import { ModelContext } from "../context/Context";
 
 export default function () {
   const { useEffects } = useStore(state => ({ ...state }));
-  const [darkModel, lang, location, home, ICP, NISM] = useEffects();
+  const [darkModel, lang, location, home, ICP, NISM, NISMN] = useEffects();
 
   return (
     <footer className="opacity-50 md:pr-[40px] flex flex-col-reverse text-black dark:text-white items-end w-full gap-1  h-[150px] bg-transparent p-5 rounded relative z-10 ">
@@ -25,7 +25,7 @@ export default function () {
             </Typography>
             {
               NISM &&
-              <a href={`http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${NISM}`} target="_blank" className="flex items-center text-[10px] md:text-footer !font-[550] hover:text-pink-500 dark:hover:text-blue-500">
+              <a href={`http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${NISMN}`} target="_blank" className="flex items-center text-[10px] md:text-footer !font-[550] hover:text-pink-500 dark:hover:text-blue-500">
                 <img src="https://imgservices-1252317822.image.myqcloud.com/image/20191223/o5lajshfcw.png" className="w-[18px] h-[18px]" />
                 <span> {NISM} </span>
               </a>
@@ -47,7 +47,7 @@ export default function () {
             </Typography>
             {
               NISM &&
-              <a href={`http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${NISM}`} target="_blank" className="flex items-center !font-[400] !text-[18px] !font-[slideyouran] hover:text-pink-500 dark:hover:text-blue-500">
+              <a href={`http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${NISMN}`} target="_blank" className="flex items-center !font-[400] !text-[18px] !font-[slideyouran] hover:text-pink-500 dark:hover:text-blue-500">
                 <img src="https://imgservices-1252317822.image.myqcloud.com/image/20191223/o5lajshfcw.png" className="w-[18px] h-[18px]" />
                 <span> {NISM} </span>
               </a>
@@ -71,12 +71,12 @@ export default function () {
 
 const useStore = create(set => ({
   useEffects: () => {
-    const { darkModel, lang, ICP, NISM } = useContext(ModelContext);
+    const { darkModel, lang, ICP, NISM, NISMN } = useContext(ModelContext);
     const location = useLocation();
     function home(location, lang) {
       return location.pathname == `/${lang}/` || location.pathname == `/${lang}`
     }
 
-    return [darkModel, lang, location, home, ICP, NISM];
+    return [darkModel, lang, location, home, ICP, NISM, NISMN];
   }
 }));

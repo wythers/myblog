@@ -6,6 +6,7 @@ import { Input } from "@material-tailwind/react";
 const APP_ID = "your-app-id";
 const INDEX_NAME = "your-index-name";
 const API_KEY = "your-algolia-api-key";
+
  
 export default function({mobile}) {
   return (

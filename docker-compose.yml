@@ -7,7 +7,6 @@ services:
     depends_on:
       - mongodb
     volumes:
-      - /home/web/:/static/
       - /home/mongodb/:/mongodb/
     networks:
       - back-tier

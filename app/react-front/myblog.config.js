@@ -13,7 +13,9 @@ export default defineConfig({
   codeRepository: 'https://github.com/wythers/myblog-code-examples',
   
   ICP: '豫ICP备2024068279号',  // ICP 
-  NISM: '', // National Internet Security Management
+  ICPN: '2024068279',
+  NISM: '豫公网安备41152602000261号', // National Internet Security Management
+  NISMN: '41152602000261',
 
   language: [
     {

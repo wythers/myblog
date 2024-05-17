@@ -8,9 +8,9 @@ Myblog was designed to build a modern Web Blog. Just a small bit about it:
 
 - **SPA**: Yes, Building with Myblog will produce an SPA web blog, which means leaving rendering to the frontend and requiring fewer server resources. Taking [Wyther's Blog](wytherblog.top) as an example, the annual cloud server bill is about $15.
 
-- **Microservice-based** On the backend, for example, web and application services are independent, which means migration can take a few minutes depending on the cloud provider's price.
+- **Microservice-based**: On the backend, for example, web and application services are independent, which means migration can take a few minutes depending on the cloud provider's price.
 
-- **Writing Post Only With Markdown** No HTML, No CSS, NO static page, just writing your post ONLY with Markdown!!!  
+- **Writing Post Only With Markdown**: No HTML, No CSS, NO static page, just writing your post ONLY with Markdown!!!  
 
 There's a lot more to be had! Give it a try and find out.  
 
@@ -32,7 +32,7 @@ Specialize the files based on your blog information.
 $ docker compose up -d
 ```  
 
-## Author
+## Authors
 
 - Wyther Yang([wytherblog.top](wytherblog.top))
 

@@ -98,8 +98,8 @@ export default function ({ data }) {
         <div className="w-full h-[100px]"></div>
         <img src="/imgs/beams.jpg" alt="bg" className="fixed dark:invert left-[90%] top-48 max-w-none -translate-x-2/3 -translate-y-1/2" width="1308" />
         <div className={`relative flex w-full top-[30px] items-center ${atDocs && 'lg:pl-[350px] lg:pr-[10px]'} desktop:px-[400px]`}>
-          <div className="relative w-full  bg-transparent px-6 py-12 md:mx-auto md:max-w-3xl lg:max-w-4xl  lg:pb-28 lg:pt-16">
-            <div className={`
+          <main className="relative w-full  bg-transparent px-6 py-12 md:mx-auto md:max-w-3xl lg:max-w-4xl  lg:pb-28 lg:pt-16">
+            <article className={`
               prose prose-rose dark:prose-sky markdown dark:prose-invert mx-auto mt-8 lg:prose-xl
               prose-ol:!py-0 prose-ol:!my-0
               prose-li:!py-0 prose-li:!my-0
@@ -112,8 +112,8 @@ export default function ({ data }) {
                 'font-sans !text-[20px]'}
               `}>
               {markdown}
-            </div>
-          </div>
+            </article>
+          </main>
         </div>
       </animated.div>
     </>

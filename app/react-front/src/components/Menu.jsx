@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { IconButton } from "@material-tailwind/react";
 import { useSpring, animated } from '@react-spring/web';
 import { useScroll } from '@use-gesture/react';
@@ -30,7 +30,7 @@ export default function() {
   return (
     <animated.div className={`fixed w-full h-[100px] z-[50]`} style={s1}>
 
-      <div className="hidden relative lg:flex w-full h-[100px] items-center justify-between px-[20px] lg:px-[50px]">
+      <nav className="hidden relative lg:flex w-full h-[100px] items-center justify-between px-[20px] lg:px-[50px]">
         <div className="flex gap-3 items-center">
           <Button tooltip={lang == 'en' ? 'home' : '首页'} isfocused={atHome} type="icon" tryfocus={() => { nav(`/${lang}/`) }}>
             <HomeIcon />
@@ -67,7 +67,7 @@ export default function() {
         <Link to={`/${lang}/`}>
           <img className="w-[160px] h-[65px] invert opacity-80 dark:invert-0 cursor-fancy" src="/imgs/logo.png" />
         </Link>
-      </div>
+      </nav>
       <div className="relative flex lg:hidden gap-3 w-full h-[100px] items-center flex-row-reverse justify-between px-[20px] lg:px-[50px]">
         <IconButton variant="text" onClick={openDrawer}>
           <Bars3Icon />
@@ -93,13 +93,13 @@ export default function() {
 
       {
         atDocs &&
-        <animated.div
+        <animated.aside
           style={{ ...s3 }} className={`${darkModel % 2 ? 'graysmallscrollbar' : 'lightsmallscrollbar'} ${!scroll && 'scrollbar-hide'} relative hidden border-b-2 rounded-md border-red-200 dark:border-blue-200 lg:flex lg:flex-col w-[300px] lg:w-[330px] h-sideh overflow-y-auto overflow-x-hidden ml-[20px] lg:ml-[50px]`}
           onMouseEnter={() => setScroll(true)}
           onMouseLeave={() => setScroll(false)}
         >
           <Nav data={data} lang={lang} />
-        </animated.div>
+        </animated.aside>
       }
     </animated.div>
   )

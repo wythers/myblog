@@ -20,8 +20,8 @@ export default function ({ data, lang, call }) {
   }, [data, lang, call])
 
   return (
-    <>
-      <NavLink key={-1}
+    <ul>
+      <li><NavLink key={-1}
         className={({ isActive, isPending }) => {
           return isPending ? pending : isActive ? active : base;
         }}
@@ -29,9 +29,9 @@ export default function ({ data, lang, call }) {
         to={`/${lang}/docs/Overview`}>
         <Typography className={`relative ${lang == 'zh' && '!font-[slideyouran] !text-[20px]'} w-full capitalize !line-clamp-1 hover:!line-clamp-none px-[20px] my-[6px]`}> {lang == 'en' ? "Overview" : "总览"} </Typography>
         <Overview date={data[0].date} length={data.length} />
-      </NavLink>
+      </NavLink></li>
       <Nav m={catalogs} level={0} />
-    </>
+    </ul>
   )
 }
 
@@ -45,23 +45,23 @@ function buildingMap({ m, tags, title, path, call, date, lang, time, free, types
   } else {
     const splitTitle = title.replaceAll(' ', '-');
     if (!m.get('base')) {
-      m.set('base', [<NavLink key={0}
+      m.set('base', [<li><NavLink key={0}
         className={({ isActive, isPending }) => {
           return isPending ? pending : isActive ? active : base;
         }}
         onClick={call ? call : () => { }}
         to={`${path}/${splitTitle}`}>
         <Card title={title} date={date} lang={lang} time={time} types={types} />
-      </NavLink>]);
+      </NavLink></li>]);
     } else {
-      m.set('base', [...m.get('base'), <NavLink key={m.get('base').length}
+      m.set('base', [...m.get('base'), <li><NavLink key={m.get('base').length}
         className={({ isActive, isPending }) => {
           return isPending ? pending : isActive ? active : base;
         }}
         onClick={call ? call : () => { }}
         to={`${path}/${splitTitle}`}>
         <Card title={title} date={date} lang={lang} time={time} types={types} />
-      </NavLink>])
+      </NavLink></li>])
     }
   }
   return m;
@@ -76,14 +76,14 @@ function Nav({ m, level }) {
     n = keys.next().value;
   }
   return (
-    <>
+    <ul>
       {m.get('base')}
       {
-        karr.map(k => (k !== 'base' && <div key={k} className="w-full">
+        karr.map(k => (k !== 'base' && <li key={k} className="w-full">
           <NavItem k={k} m={m} level={level} />
-        </div>))
+        </li>))
       }
-    </>
+    </ul>
   )
 }
 
@@ -94,21 +94,25 @@ function NavItem({ m, k, level }) {
     blanks = [...blanks, <span key={i}> ☆ </span>];
   }
   return (
-    <>
-      <ListItem onClick={() => setOpen(open => !open)} className={`relative  w-full text-base font-sans font-semibold dark:!text-gray-300 focus:!bg-gray-50 dark:hover:!bg-black dark:focus:!bg-black`}>
-        &nbsp;{blanks}
-        {k}
-        <ListItemSuffix>
-          <ChevronRightIcon
-            strokeWidth={2.5}
-            className={`h-3 w-3 transition-transform lg:block ${open ? 'rotate-90' : ''}`}
-          />
-        </ListItemSuffix>
-      </ListItem>
-      <Collapse open={open}>
-        <Nav m={m.get(k)} level={level + 1} />
-      </Collapse>
-    </>
+    <ul>
+      <li>
+        <ListItem onClick={() => setOpen(open => !open)} className={`relative  w-full text-base font-sans font-semibold dark:!text-gray-300 focus:!bg-gray-50 dark:hover:!bg-black dark:focus:!bg-black`}>
+          &nbsp;{blanks}
+          {k}
+          <ListItemSuffix>
+            <ChevronRightIcon
+              strokeWidth={2.5}
+              className={`h-3 w-3 transition-transform lg:block ${open ? 'rotate-90' : ''}`}
+            />
+          </ListItemSuffix>
+        </ListItem>
+      </li>
+      <li>
+        <Collapse open={open}>
+          <Nav m={m.get(k)} level={level + 1} />
+        </Collapse>
+      </li>
+    </ul>
   )
 }
 

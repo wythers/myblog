@@ -74,7 +74,7 @@ export default function () {
       </div>
 
       <div className="relative flex flex-col border-y-2 border-gray-200 dark:border-gray-900 grow mt-4 pt-4 overflow-y-scroll overflow-x-hidden scrollbar-hide gap-2 px-2">
-        <DocSearch mobile={true} />
+        <DocSearch mobile={true} closeDrawer={closeDrawer} />
         <Nav data={data} lang={lang} call={closeDrawer} />
       </div>
 

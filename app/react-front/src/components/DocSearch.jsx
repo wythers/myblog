@@ -3,18 +3,19 @@ import { DocSearch } from "@docsearch/react";
 import { Input } from "@material-tailwind/react";
  
 //TODO: take the below three variables to the config file as a prop
-const APP_ID = "GH3ROZIE78";
-const INDEX_NAME = "wythertop";
-const API_KEY = "b1e39392dd008b0e5e3ace12a09adc6d";
+const APP_ID = "your_Algolia_APP_ID";
+const INDEX_NAME = "your_Algolia_INDEX_NAME";
+const API_KEY = "your_Algolia_API_Key";
  
-export default function({mobile}) {
+export default function({mobile, closeDrawer}) {
   return (
   <>
     <div className={`${mobile ? 'block' : 'hidden lg:block'} group relative self-center`}>
       <Input variant="outlined"
         label="Search..." placeholder="Search..."
         className="!w-[275px] focus:!border-t-red-200 group-hover:border-2 group-hover:!border-red-200 dark:focus:!border-t-light-blue-200 dark:group-hover:!border-light-blue-200"
-      readOnly/>
+      readOnly
+      />
       <div className="absolute top-[20px] right-2.5 -translate-y-2/4">
         <kbd className="rounded border border-blue-gray-100 bg-white px-1 pt-px pb-0 text-xs font-medium text-gray-900 shadow shadow-black/5">
           <span className="mr-0.5 inline-block">
@@ -23,7 +24,7 @@ export default function({mobile}) {
             K
         </kbd>
       </div>
-      <div className="absolute inset-0 w-full opacity-0">
+      <div className="absolute inset-0 w-full opacity-0" onClick={ mobile ? () => closeDrawer() : () => {} }>
         <DocSearch indexName={INDEX_NAME} apiKey={API_KEY} appId={APP_ID} />
       </div>
     </div>

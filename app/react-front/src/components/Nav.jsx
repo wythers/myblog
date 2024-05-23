@@ -21,7 +21,7 @@ export default function ({ data, lang, call }) {
 
   return (
     <ul>
-      <li><NavLink key={-1}
+      <li  key={-1}><NavLink
         className={({ isActive, isPending }) => {
           return isPending ? pending : isActive ? active : base;
         }}
@@ -45,7 +45,7 @@ function buildingMap({ m, tags, title, path, call, date, lang, time, free, types
   } else {
     const splitTitle = title.replaceAll(' ', '-');
     if (!m.get('base')) {
-      m.set('base', [<li><NavLink key={0}
+      m.set('base', [<li key={0}><NavLink
         className={({ isActive, isPending }) => {
           return isPending ? pending : isActive ? active : base;
         }}
@@ -54,7 +54,7 @@ function buildingMap({ m, tags, title, path, call, date, lang, time, free, types
         <Card title={title} date={date} lang={lang} time={time} types={types} />
       </NavLink></li>]);
     } else {
-      m.set('base', [...m.get('base'), <li><NavLink key={m.get('base').length}
+      m.set('base', [...m.get('base'), <li key={m.get('base').length}><NavLink
         className={({ isActive, isPending }) => {
           return isPending ? pending : isActive ? active : base;
         }}

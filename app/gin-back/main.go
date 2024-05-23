@@ -6,6 +6,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
+	"github.com/wythers/myblog/app/gin-back/handlers/algolia"
 	"github.com/wythers/myblog/app/gin-back/internal/urls"
 	"github.com/wythers/myblog/app/gin-back/middlewares/logger"
 	"github.com/wythers/myblog/app/gin-back/middlewares/recovery"
@@ -31,7 +32,7 @@ func init() {
 	}
 
 	Context = global.NewContext(mongoClient)
-	log.Println("Connect to MongoDB.")
+	log.Println("Connected to MongoDB.")
 }
 
 func main() {
@@ -42,11 +43,26 @@ func main() {
 		recovery.New(Context.MongoClient()),
 	)
 
-	nginx.NoRoute(func(c *gin.Context) {
-		c.File("/static/index.html")
-	})
-	nginx.Static("/imgs", "/static/imgs")
-	nginx.Static("/assets", "/static/assets")
+	// the loading shell
+	{
+		nginx.NoRoute(func(c *gin.Context) {
+			c.File("/static/index.html")
+		})
+	}
+
+	// the static resource
+	{
+		nginx.Static("/imgs", "/static/imgs")
+		nginx.Static("/assets", "/static/assets")
+	}
+
+	// the algolia docSearch
+	{
+		nginx.LoadHTMLGlob("/algolia/templates/*")
+		nginx.GET("/algolia/docs", algolia.DocSearch)
+		nginx.GET("/algolia/docs/:lang/:idx", algolia.Rendering)
+		nginx.GET("/sitemap.xml", algolia.Discard)
+	}
 
 	nginx.Run(":8080")
 }

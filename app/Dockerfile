@@ -17,4 +17,5 @@ COPY --from=myblog-front /usr/src/myblog/front/dist .
 COPY --from=myblog-front /usr/src/myblog/front/imgs imgs
 WORKDIR /app
 COPY --from=myblog-webserver /usr/src/myblog/web-back/app .
+COPY --from=myblog-webserver /usr/src/myblog/web-back/handlers/algolia/templates /algolia/templates
 ENTRYPOINT [ "./app" ]

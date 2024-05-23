@@ -6,7 +6,7 @@ const names = JSON.parse(file).data;
 
 const paths = names.map(({name, chars}) => ({ 
 
-       url: `https://834832894.r.cdn36.com/chinesefonts3/packages/ysyrxk/dist/slideyouran-Regular2_0/${name}`,
+       url: `https://chinese-fonts-cdn.deno.dev/chinesefonts3/packages/ysyrxk/dist/slideyouran-Regular2_0/${name}`,
        unicodeRange: chars
 }));
 

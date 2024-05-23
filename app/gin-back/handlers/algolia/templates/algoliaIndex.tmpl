@@ -1,0 +1,28 @@
+<html>
+<head>
+        <title> Overview | 总览 </title>
+        <meta charset="utf-8">
+
+        <script>
+                const lang = localStorage.getItem("lang") ?? "zh";
+                window.location.replace(`https://wytherblog.top/${lang}/docs/Overview/`);
+
+        </script>
+</head>
+<body>
+        <aside>
+                <nav> 
+                        <ul>
+                                {{range .Snapshots}}
+                                <li>
+                                        <a href="{{index .Urls 0}}" />
+                                </li>
+                                <li>
+                                        <a href="{{index .Urls 1}}" />
+                                </li>
+                                {{end}}
+                        </ul>
+                </nav>
+        </aside>
+</body>
+</html>

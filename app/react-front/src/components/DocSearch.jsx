@@ -3,10 +3,9 @@ import { DocSearch } from "@docsearch/react";
 import { Input } from "@material-tailwind/react";
  
 //TODO: take the below three variables to the config file as a prop
-const APP_ID = "your-app-id";
-const INDEX_NAME = "your-index-name";
-const API_KEY = "your-algolia-api-key";
-
+const APP_ID = "GH3ROZIE78";
+const INDEX_NAME = "wythertop";
+const API_KEY = "b1e39392dd008b0e5e3ace12a09adc6d";
  
 export default function({mobile}) {
   return (

@@ -83,13 +83,11 @@ func syncFetch() {
 
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, "https://appserver/raw/snapshots.json", nil)
 	if err != nil {
-		fmt.Println("1", err)
 		return
 	}
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil || resp.ContentLength == -1 {
-		fmt.Println("2", err)
 		return
 	}
 
@@ -102,7 +100,6 @@ func syncFetch() {
 	s := []Snapshots{}
 	err = json.Unmarshal(b, &s)
 	if err != nil {
-		fmt.Println("3", err)
 		return
 	}
 

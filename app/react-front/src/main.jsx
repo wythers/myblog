@@ -82,6 +82,7 @@ export default function ({ defaultThemeModel, ...props }) {
   if (defaultDarkModel) {
     const r = document.querySelector("html");
     r.classList.add('dark');
+    r.setAttribute('data-theme', 'dark');
   }
 
   ReactDOM.createRoot(document.getElementById('root')).render(

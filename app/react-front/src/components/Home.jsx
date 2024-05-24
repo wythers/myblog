@@ -52,10 +52,21 @@ const newStore = (defaultDarkModle) => create((set, get) => ({
 
     useEffect(() => {
       const r = document.querySelector("html");
-      get().darkModel % 2 ? r.classList.add('dark', 'grayscrollbar') : r.classList.remove('dark', 'grayscrollbar');
-      get().darkModel % 2 ? r.classList.remove('lightscrollbar') : r.classList.add('lightscrollbar');
+      get().darkModel % 2 ? dark(r) : light(r);
     }, [get().darkModel]);
 
     return [location, docs];
   }
 }));
+
+const dark = (r) => {
+  r.classList.add('dark', 'grayscrollbar');
+  r.setAttribute('data-theme', 'dark');
+  r.classList.remove('lightscrollbar');
+}
+
+const light = (r) => {
+  r.classList.remove('dark', 'grayscrollbar'); 
+  r.setAttribute('data-theme', 'light');
+  r.classList.add('lightscrollbar');
+}

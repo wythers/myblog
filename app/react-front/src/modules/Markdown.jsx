@@ -2,8 +2,6 @@ import React, { useContext, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useSpring, animated } from '@react-spring/web';
 
-import { github, darcula } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import SyntaxHighlighter from 'react-syntax-highlighter';
 import remarkGfm from "remark-gfm";
 import gemoji from 'remark-gemoji';
 import rehypeRaw from 'rehype-raw';
@@ -15,6 +13,7 @@ import { annotate } from 'rough-notation';
 
 import { ModelContext } from '../context/Context';
 import CodeBlock from '../components/CodeBlock';
+import { CodeBlock as Code, dracula, github } from "react-code-blocks";
 
 export default function ({ data }) {
   const { darkModel, lang } = useContext(ModelContext);
@@ -28,7 +27,8 @@ export default function ({ data }) {
     let handlers = [];
     let elements = [];
     let sig = [];
-
+    let history = -1;
+    
     mock.map((m, idx) => {
       const a = document.createElement('a')
       const e = document.getElementById(m);
@@ -36,8 +36,6 @@ export default function ({ data }) {
 
       !dark ? a.classList.add('text-gray-800') :
         a.classList.add('text-white')
-
-      lang == 'zh' && a.classList.add('font-[slideyouran]', 'text-[26px]', 'font-[400]');
 
       a.textContent = m;
       a.setAttribute("href", `#${m}`);
@@ -62,9 +60,15 @@ export default function ({ data }) {
         if (!show && sig[i] == 1) {
           handlers[i].show();
           show = true;
+          history = i;
           continue
         }
         handlers[i].hide();
+      }
+
+      
+      if (!show && history != -1) {
+        handlers[history].show();
       }
 
     }, { root: null, rootMargin: '0px', threshold: 0 })
@@ -104,12 +108,6 @@ export default function ({ data }) {
               prose-ol:!py-0 prose-ol:!my-0
               prose-li:!py-0 prose-li:!my-0
               prose-pre:!p-0 prose-code:bg-gray-300 dark:prose-code:bg-gray-800 prose-code:rounded
-              ${lang == 'zh' ?
-                `!font-[slideyouran] !text-[26px] !font-[400] 
-               prose-h1:font-[slideyouran] prose-h1:text-[50px] lg:prose-h1:text-[70px] prose-h1:font-[400]
-               prose-h2:font-[slideyouran] prose-h2:text-[40px] lg:prose-h2:text-[50px] prose-h2:font-[400]
-               prose-h3:font-[slideyouran] prose-h3:text-[30px] lg:prose-h3:text-[40px] prose-h3:font-[400]` :
-                'font-sans !text-[20px]'}
               `}>
               {markdown}
             </article>
@@ -135,21 +133,27 @@ function preprocess(data, darkModel, lang, pathname) {
     let text = String(children);
 
     if (text[0] !== '@') {
-      return match ? <SyntaxHighlighter language={match[1]} PreTag="div" {...properties} style={darkModel % 2 ? darcula : github} /> :
-      <code className='px-1' {...properties} />
+      return <span className="codeblock w-full"><Code
+        codeContainerStyle={{width: '100%'}}
+        language={match ? match[1] : 'cpp'}
+        text={text.replace(/\n$/, '')}
+        showLineNumbers={false}
+        theme={darkModel % 2 ? dracula : github}
+        codeBlock
+      /></span>
     }
 
     let file = 'unkown tab'
-    const idx = text.indexOf('}');
+    const idx = text.indexOf('\n\n');
     if (idx == -1) {
       throw Error('code block format error.');
     }
 
-    const json = JSON.parse(text.substring(1, idx+2));
+    const json = JSON.parse(text.substring(1, idx));
     file = json.tab;
     text = text.substring(idx + 2) + '\n';
     text = text.replace(/\n$/, '');
-    files[file] = files[file] ? [files[file][0] + '\n' + text, match[1]] : [text, match[1]];
+    files[file] = files[file] ? [files[file][0] + '\n' + text, match ? match[1] : 'cpp'] : [text, match ? match[1] : 'cpp'];
 
     return json.skipped ?? <CodeBlock files={{ ...files }} InitTab={file} dark={darkModel % 2} />
   }
@@ -198,7 +202,7 @@ function preprocess(data, darkModel, lang, pathname) {
     markdown:
       <Markdown
         remarkPlugins={[remarkGfm, gemoji, remarkAlert]}
-        components={{ code, img, blockquote, ...heads() }}
+        components={{ code, img, ...heads() }}
         rehypePlugins={[rehypeRaw]}
       >
         {data}

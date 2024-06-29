@@ -2,10 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-/* html overScrollBehavior for Safari in mobile browsers, and body overScroll Chrome to disable overpull-to-refresh */
-html, body {
-	overflow-x: hidden !important;
+html {
+	overflow-x: hidden;
 	scroll-behavior: smooth;
+
+	font-family: ui-sans-serif, system-ui, -system-ui, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji";
+}
+
+html,
+body {
 	overscroll-behavior: none;
 }
 
@@ -95,13 +100,14 @@ html, body {
 .markdown code::before {
 	content: "";
 }
+
 .markdown code::after {
 	content: "";
 }
 
 .markdown pre code {
 	display: block;
-	background-color: transparent !important; 
+	background-color: transparent !important;
 	overflow: visible;
 	border-radius: 0px;
 }
@@ -113,6 +119,17 @@ html, body {
 	font-weight: 200;
 	max-height: 80vh;
 	overflow: auto;
+}
+
+@media (max-width: 640px) {
+	.codeblock {
+		background: transparent;
+		font-family: -apple-system, Roboto, "Open Sans", "Helvetica Neue", sans-serif !important;
+		font-size: small !important;
+		font-weight: 200;
+		max-height: 80vh;
+		overflow: auto;
+	}
 }
 
 .codeblock-tab {

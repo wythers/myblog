@@ -30,7 +30,7 @@ export default function () {
             Hello from {darkModel % 2 ? <LinearGradient gradient={['to right', 'blue, green']}> {host} </LinearGradient> : <LinearGradient gradient={['to right', 'red, yellow']}> {host} </LinearGradient>}
             {', '}{intro}
           </span> :
-          <Typography variant="h1" className="!font-[slideyouran] !font-[400] text-[54px] !leading-loose lg:w-[800px]  text-gray-700 dark:text-gray-200/90">
+          <Typography variant="h1" className="!font-[400] text-[50px] !leading-loose lg:w-[800px]  text-gray-700 dark:text-gray-200/90">
             {darkModel % 2 ? <LinearGradient gradient={['to right', 'blue, green']}> 你好！ </LinearGradient> : <LinearGradient gradient={['to right', 'red, yellow']}> 你好！ </LinearGradient>}
             {intro}
           </Typography>
@@ -39,7 +39,7 @@ export default function () {
         {
           lang == 'en' ?
             <span> Get Reading </span> :
-            <span className="!font-[slideyouran] text-[20px]"> 开始阅读 </span>
+            <span> 开始阅读 </span>
         }
         <RightCir />
       </Link>

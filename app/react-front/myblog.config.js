@@ -2,14 +2,14 @@ import defineConfig from "./src/main"
 
 export default defineConfig({
   defaultlanguage: 'zh', // chinese and english supported
-  defaultThemeModel: 'light',
+  defaultThemeModel: 'dark',
 
   github: 'https://github.com/wythers',  // your github home link
   zhihu: 'https://zhihu.com/people/stayfoolish-91', // your zhihu home link
   twitter: '', // your twitter  home link,
   discord: '', // your discord home link
 
-  email: 'wytherblog@gmail.com',
+  email: 'wytherblog@qq.com wytherblog@gmail.com',
   codeRepository: 'https://github.com/wythers/myblog-code-examples',
   
   ICP: '豫ICP备2024068279号',  // ICP 

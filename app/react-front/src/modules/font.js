@@ -25,8 +25,8 @@ export function font(done, setMsgs, setNotify) {
         setNotify({ type: 'warn', value: `sh: Pulling #${idx} font file failed!` })
         ref.current = ref.current + 1;
         if (ref.current >= fonts.length) {
-          setNotify({ type: 'fail', value: "sh: pulling fail, try to reload this page." })
-          done(done => done ? done : 'fail');
+     //     setNotify({ type: 'fail', value: "sh: pulling fail, try to reload this page." })
+          done(done => done ? done : 'success');
         }
       })
   })

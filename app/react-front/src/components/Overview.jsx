@@ -104,8 +104,8 @@ export default function () {
                       </Link>
 
                       <div className="flex flex-col bg-gray-200 hover:bg-gradient-y-to-r-60 dark:bg-gray-900 p-4 rounded-lg border-white gap-2 mini:w-[400px] dark:hover:bg-gradient-b-to-g-60 opacity-60">
-                        <Typography variant="h4" className={H3}> 订阅 </Typography>
-                        <Typography variant="paragraph" className={base} > 新文章发布将收到邮件提醒！ </Typography>
+                        <Typography variant="h4" className={H3}> 订阅 & 打赏 </Typography>
+                        <Typography variant="paragraph" className={base} > 新文章发布将收到邮件提醒，也可以为我加油！ </Typography>
                         <Button variant="outlined" disabled={true} ripple={false} className={`p-1 self-start text-inherit border-black dark:border-white ${base}`}> 即将到来 </Button>
                       </div>
 
@@ -118,7 +118,7 @@ export default function () {
                     </div>
 
                     <div className="flex flex-col gap-1">
-                      <Typography variant="h6" className="font-[slideyouran] text-[20px] lg:text-[30px] font-[400]"> 怎么联系我？ </Typography>
+                      <Typography variant="h6" className="text-[20px] lg:text-[30px] font-[400]"> 怎么联系我？ </Typography>
                       <Typography variant="small" className={foot}>
                         这里可以探索新想法、尝试不同技术并思考最佳实践。如果你对某篇文章感兴趣或想提供反馈。请发送电子邮件至
                         <span className="text-red-400 dark:text-blue-400"> {email} </span>
@@ -126,7 +126,7 @@ export default function () {
                     </div>
 
                     <div className="flex flex-col gap-2 items-center lg:items-start">
-                      <Typography variant="h6" className="font-[slideyouran] text-[20px] lg:text-[30px] font-[400]"> 获得些许新的思考? </Typography>
+                      <Typography variant="h6" className="text-[20px] lg:text-[30px] font-[400]"> 获得些许新的思考? </Typography>
                       <div className="flex gap-5">
                         <IconButton disabled={thumb} className={`${thumb == 'up' ? 'border-red-400 dark:border-blue-400' : 'border-black dark:border-white'} !border-[1px] opacity-60 hover:opacity-100`}
                           onClick={() => setThumb('up')}
@@ -160,11 +160,11 @@ export default function () {
   )
 }
 
-const H1 = 'font-[slideyouran] text-[70px] font-[400]';
-const H2 = 'font-[slideyouran] text-[50px] font-[400]';
-const H3 = 'font-[slideyouran] text-[40px] font-[400]';
-const base = 'font-[slideyouran] text-[20px] font-[400]';
-const foot = 'font-[slideyouran] text-[19px] font-[400]';
+const H1 = 'text-[65px] font-[400]';
+const H2 = 'text-[45px] font-[400]';
+const H3 = 'text-[35px] font-[400]';
+const base = 'text-[16px] font-[400]';
+const foot = 'text-[16px] font-[400]';
 
 const useStore = create(set => ({
   thumb: null,
@@ -176,8 +176,8 @@ const useStore = create(set => ({
     const splitTitle = title.replaceAll(' ', '-');
     const joinedTags = tags.join('/');
     const latestPath = `/${lang}/docs/${joinedTags}/${splitTitle}`
-    const [siteTitle, siteDomainName] = [localStorage.getItem(`${lang}/siteTitle`), decodeURI(window.location.href)];
-    const siteDescription = lang == 'en' ? 'Documentation overview for the introduction' : '文档概述';
+    const [siteTitle, siteDomainName] = [sessionStorage.getItem(`${lang}/siteTitle`), decodeURI(window.location.href)];
+    const siteDescription = lang == 'en' ? 'Documentation overview for the introduction' : '文档总述';
 
     const spring = useSpring({
       from: {

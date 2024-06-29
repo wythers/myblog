@@ -4,7 +4,6 @@ import (
 	"context"
 	"crypto/tls"
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 	"strconv"
@@ -25,7 +24,6 @@ func init() {
 func DocSearch(c *gin.Context) {
 	syncFetch()
 	if snapshots == nil {
-		fmt.Println("4")
 		c.AbortWithStatus(http.StatusNotFound)
 		return
 	}

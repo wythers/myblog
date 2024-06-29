@@ -56,7 +56,7 @@ function Main({ lang, ...props }) {
         tasks={[
           { title: 'Initialize route context', do: pullRouter() },
           { title: 'Fetch meta data', do: pullSnapshots() },
-          { title: 'Sync all necessary font files', do: pullfont(localStorage.getItem('lang') ?? defaultlanguage) },
+//          { title: 'Sync all necessary font files', do: pullfont(localStorage.getItem('lang') ?? defaultlanguage) },
         ]}
         moduleIdx={0}
         hotDataIdx={1}

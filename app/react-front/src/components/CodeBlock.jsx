@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useState } from "react"
 import { CodeBlock, dracula, github } from "react-code-blocks";
 import { ClipboardDocumentListIcon, ClipboardDocumentCheckIcon } from "@heroicons/react/24/outline"
 import { useCopyToClipboard } from "usehooks-ts";
@@ -39,13 +39,8 @@ function Code({ dark, file }) {
   const [copied, setCopied] = useState(false);
   const [_, copy] = useCopyToClipboard();
 
-  const ref = useRef();
-  useEffect(() => {
-    ref.current.scrollTop = ref.current.scrollHeight;
-  }, [])
-
   return (
-    <div ref={ref} className="relative codeblock w-full">
+    <div className="relative codeblock w-full">
       {
         !copied ?
           <IconButton className="!absolute right-2 top-2" onClick={

@@ -57,10 +57,6 @@ export default function() {
           <Translator handleTranslate={
             () => {
               localStorage.setItem('lang', to);
-              if (lang == 'en' && sessionStorage.getItem('font') != 'done') {
-                window.location.replace(peerPath);
-                return;
-              }
               nav(peerPath);
             }} />
         </div>

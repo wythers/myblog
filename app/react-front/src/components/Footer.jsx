@@ -23,39 +23,25 @@ export default function () {
             <Typography className="text-[8px] md:text-footer !font-[550]">
               Lessons learned building amazing apps and writing beautiful code.
             </Typography>
-            {
-              NISM &&
-              <a href={`http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${NISMN}`} target="_blank" className="flex items-center text-[10px] md:text-footer !font-[550] hover:text-pink-500 dark:hover:text-blue-500">
-                <img src="https://imgservices-1252317822.image.myqcloud.com/image/20191223/o5lajshfcw.png" className="w-[18px] h-[18px]" />
-                <span> {NISM} </span>
-              </a>
-            }
-            {
-              ICP &&
-              <a href="https://beian.miit.gov.cn" target="_blank" className="flex items-center text-[10px] md:text-footer !font-[550] hover:text-pink-500 dark:hover:text-blue-500">
-                <img src="/imgs/icp.ico" className="w-[18px] h-[18px]" />
-                <span> {ICP} </span>
-              </a>
-            }
           </> :
           <>
-            <Typography className={`!font-[slideyouran]  text-[10px] md:text-[18px] !font-[400]`}>
+            <Typography className={`text-[10px] md:text-[14px] !font-[550]`}>
               Wyther's设计和架构，技术支持——React、TailwindCSS、Gin 等
             </Typography>
-            <Typography className="!font-[slideyouran]  text-[12px] md:text-[18px]  !font-[400] ">
+            <Typography className="text-[10px] md:text-[14px] !font-[550]">
               构建令人惊叹的应用程序和编写优美的代码
             </Typography>
             {
               NISM &&
-              <a href={`http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${NISMN}`} target="_blank" className="flex items-center !font-[400] !text-[18px] !font-[slideyouran] hover:text-pink-500 dark:hover:text-blue-500">
-                <img src="https://imgservices-1252317822.image.myqcloud.com/image/20191223/o5lajshfcw.png" className="w-[18px] h-[18px]" />
+              <a href={`http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${NISMN}`} target="_blank" className="flex items-center text-[10px] md:text-[14px] !font-[550] hover:text-pink-500 dark:hover:text-blue-500">
+                <img src="https://imgservices-1252317822.image.myqcloud.com/image/20191223/o5lajshfcw.png" className="w-[12px] md:w-[18px] md:h-[18px]" />
                 <span> {NISM} </span>
               </a>
             }
             {
               ICP &&
-              <a href="https://beian.miit.gov.cn" target="_blank" className="flex items-center !font-[400] !text-[18px] !font-[slideyouran] hover:text-pink-500 dark:hover:text-blue-500">
-                <img src="/imgs/icp.ico" className="w-[18px] h-[18px]" />
+              <a href="https://beian.miit.gov.cn" target="_blank" className="flex items-center text-[10px] md:text-[14px] !font-[550] hover:text-pink-500 dark:hover:text-blue-500">
+                <img src="/imgs/icp.ico" className="w-[12px] md:w-[18px] md:h-[18px]" />
                 <span> {ICP} </span>
               </a>
             }
